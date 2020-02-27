@@ -1,13 +1,15 @@
 package sample05;
 
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
-@Component
+@ComponentScan("com.conf")
+//@Component
+@Scope("prototype")
 public class SungJukDTO2 {
     private String name;
     private int kor;

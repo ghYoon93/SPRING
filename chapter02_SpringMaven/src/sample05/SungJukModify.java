@@ -1,19 +1,20 @@
 package sample05;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
 
 @Data
-@Component
+@ComponentScan("com.conf")
+//@Component
 public class SungJukModify implements SungJuk {
 	@Autowired
-	private List<SungJukDTO2> list;
+	private ArrayList<SungJukDTO2> list;
 	@Autowired
 	private SungJukDTO2 sungJukDTO2;
 	@Override

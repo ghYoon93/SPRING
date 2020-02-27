@@ -1,14 +1,21 @@
 package sample05;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 import lombok.Data;
 
 @Data
+@ComponentScan("com.conf")
+//@Component
 public class SungJukDelete implements SungJuk {
-
-	private List<SungJukDTO2> list;
+	@Autowired
+	private ArrayList<SungJukDTO2> list;
+	@Autowired
 	private SungJukDTO2 sungJukDTO2;
 	@Override
 	public void execute() {

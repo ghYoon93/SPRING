@@ -45,14 +45,18 @@
 		
 		<!-- sample05 -->
 		<bean id="helloSpring" class="sample05.HelloSpring"/>
+		
 		<bean id="sungJukInput" class="sample05.SungJukInput" scope="prototype">
 		    <property name="list" ref="arrayList"/>
 		    <property name="sungJukDTO2" ref="sungJukDTO2"/>
 		</bean>
+		
 		<bean id="sungJukDTO2" class="sample05.SungJukDTO2" scope="prototype"/>
+		
 		<bean id="sungJukOutput" class="sample05.SungJukOutput">
 		    <property name="list" ref="arrayList"/>
 		</bean>
+		
 		<bean id="sungJukModify" class="sample05.SungJukModify">
 		    <property name="list" ref="arrayList"/>
 		    <property name="sungJukDTO2" ref="sungJukDTO2"/>

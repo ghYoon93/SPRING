@@ -1,17 +1,19 @@
 package sample05;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
 
 @Data
-@Component
+@ComponentScan("com.conf")
+//@Component
 public class SungJukOutput implements SungJuk{
 	@Autowired
-	private List<SungJukDTO2> list;
+	private ArrayList<SungJukDTO2> list;
 	@Override
 	public void execute() {
 		System.out.println();
