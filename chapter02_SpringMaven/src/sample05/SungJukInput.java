@@ -6,11 +6,10 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
-import lombok.Setter;
+//import lombok.Setter;
 
-@Setter
+//@Setter
 @ComponentScan("com.conf")
 //@Component
 @Scope("prototype")
