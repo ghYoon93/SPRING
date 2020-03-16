@@ -46,8 +46,8 @@ local.properties
 
 # STS (Spring Tool Suite)
 .springBeans
-pom.properties
-MANIFEST.MF
+**/pom.properties
+**/MANIFEST.MF
 
 # Code Recommenders
 .recommenders/
