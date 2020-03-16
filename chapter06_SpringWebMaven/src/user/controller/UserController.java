@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,8 +40,13 @@ public class UserController {
 	}
 	@RequestMapping(value="/user/getUserList", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView getUserList() {
-		List<UserDTO> list = userService.getUserList();
+	public ModelAndView getUserList(@RequestParam(value="searchOption", required=false, defaultValue="")String searchOption, 
+									@RequestParam(value="searchText",required = false, defaultValue = "")String searchText) {
+		
+		HashMap<String, String> map = new HashMap<>();
+		map.put("searchOption", searchOption);
+		map.put("searchText", searchText);
+		List<UserDTO> list = userService.getUserList(map);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list",list);
 		mav.setViewName("jsonView");
@@ -106,5 +112,16 @@ public class UserController {
 	@ResponseBody
 	public void modify(@ModelAttribute UserDTO userDTO) {
 		userService.modify(userDTO);
+	}
+	
+	@RequestMapping(value="/user/deleteForm", method=RequestMethod.GET)
+	public String deleteForm() {
+		return "/user/deleteForm";
+	}
+	
+	@RequestMapping(value="/user/delete", method=RequestMethod.POST)
+	@ResponseBody
+	public void delete(@RequestParam(value="id")String id) {
+		userService.delete(id);
 	}
 }

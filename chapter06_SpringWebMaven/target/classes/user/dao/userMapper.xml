@@ -12,8 +12,11 @@
 		insert into usertable values(#{name},#{id},#{pwd})
 	</insert>
 	
-	<select id="getUserList" resultMap="userResult">
+	<select id="getUserList" parameterType="java.util.HashMap" resultMap="userResult">
 		select * from usertable
+		<if test="searchOption!=''"> 
+		WHERE ${searchOption} like '%'||#{searchText}||'%'
+		</if>
 	</select>
 	
 	<select id="getUser" parameterType="String" resultType="user">

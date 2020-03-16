@@ -62,7 +62,7 @@ $('#id').focusout(function(){
 			},
 			error: function(err){
 				alert(err);
-				consol.log(err);
+				console.log(err);
 			}
 		});
 	}

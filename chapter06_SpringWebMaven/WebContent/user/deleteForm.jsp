@@ -12,17 +12,16 @@
 </style>
 </head>
 <body>
-  <label for="id">수정할 아이디 입력</label>
+  <label for="id">삭제할 아이디 입력</label>
   <input type="text" id="searchId" name="searchId">
   <input type="button" id="btn-searchId" value="아이디 검색">
   <div id="searchIdDiv"></div>
-  <form id="modifyForm" method="post" action="">
+  <form id="deleteForm" method="post" action="">
   <table id="table" class="table">
 	<tr>
 	  <td>이름</td>
 	  <td>
-	    <input type="text" id="name" name="name">
-	    <div id="nameDiv"></div>
+	    <input type="text" id="name" name="name" readonly>
 	  </td>	  
 	</tr>
 	<tr>
@@ -32,13 +31,12 @@
 	<tr>
 	  <td>비밀번호</td>
 	  <td>
-	    <input type="text" id="pwd" name="pwd">
-	    <div id="pwdDiv"></div>
+	    <input type="text" id="pwd" name="pwd" readonly>
       </td>	  
 	</tr>
 	<tr>
 	  <td colspan="2" style="text-align:center;">
-	      <input type="button" id="modifyBtn" value="수정">
+	      <input type="button" id="deleteBtn" value="삭제">
 	      <input type="reset" value="취소">
 	  </td>
 	</tr>
@@ -61,7 +59,7 @@
 					  $('#id').val(userDTO.id);
 					  $('#pwd').val(userDTO.pwd);
 				  }else if(data.userDTO==null){
-					  $('#searchIdDiv').text('수정할 아이디가 없습니다.')
+					  $('#searchIdDiv').text('삭제할 아이디가 없습니다.')
 					  $('#searchIdDiv').css('color','red')
 					  $('#searchIdDiv').css('font-size','8pt')
 					  $('#searchIdDiv').css('font-weight','bold')
@@ -74,31 +72,17 @@
           });
           
       });
-      $('#modifyBtn').click(function(){
-    		$('#nameDiv').empty();
-    		$('#pwdDiv').empty();
-    		
-    		if($('#name').val()==''){
-    			$('#nameDiv').text('이름 입력')
-    			$('#nameDiv').css('color','red')
-    			$('#nameDiv').css('font-size','8pt')
-    			$('#nameDiv').css('font-weight','bold')
-    		
-    		}else if($('#pwd').val()==''){
-    			$('#pwdDiv').text('비밀번호 입력')
-    			$('#pwdDiv').css('color','red')
-    			$('#pwdDiv').css('font-size','8pt')
-    			$('#pwdDiv').css('font-weight','bold')
-    		
-    		}else{
-    			$.ajax({
-    				type: 'POST',
-    				url: '/chapter06_SpringWebMaven/user/modify',
-    				data: $('#modifyForm').serialize(),
-    				success: function(){
-    					alert('정보를 수정했습니다!!');
-    				}
-    			});
+      $('#deleteBtn').click(function(){
+    	  let choice = confirm("정말로 삭제하시겠습니까?");
+    	  if(choice){
+   			$.ajax({
+   				type: 'POST',
+   				url: '/chapter06_SpringWebMaven/user/delete',
+   				data: $('#id'),
+   				success: function(){
+   					alert('아이디를 삭제했습니다!!');
+   				}
+   			});
     		}
     	});
   </script>

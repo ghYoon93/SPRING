@@ -1,5 +1,6 @@
 package user.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,9 +22,10 @@ public class UserDAOMybatis implements UserDAO {
 		
 	}
 
-	@Override
-	public List<UserDTO> getUserList() {
-		return sqlSession.selectList("userSQL.getUserList");
+	public List<UserDTO> getUserList(HashMap<String, String>map) {
+		System.out.println("searchOption: "+map.get("searchOption"));
+		System.out.println("searchText: "+map.get("searchText"));
+		return sqlSession.selectList("userSQL.getUserList", map);
 		
 	}
 
@@ -35,6 +37,12 @@ public class UserDAOMybatis implements UserDAO {
 	@Override
 	public void modify(UserDTO userDTO) {
 		sqlSession.update("userSQL.userUpdate",userDTO);
+		
+	}
+
+	@Override
+	public void delete(String id) {
+		sqlSession.update("userSQL.userDelete", id);
 		
 	}
 

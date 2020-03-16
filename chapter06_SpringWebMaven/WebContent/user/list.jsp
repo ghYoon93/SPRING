@@ -19,31 +19,14 @@
 	  <th>비밀번호</th>
 	</tr>
   </table>
+  <select id="searchOption">  
+    <option value="select">선택</option>
+    <option value="name">이름</option>
+    <option value="id">아이디</option>
+  </select>
+  <input type="text" id="searchText">
+  <button type="button" id="searchBtn">검색</button>
 </body>
  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
- <script type="text/javascript">
-   $(document).ready(function(){
-	   $.ajax({
-		   type: 'post',
-		   url: '/chapter06_SpringWebMaven/user/getUserList',
-		   dataType:'json',
-		   success:function(data){
-			   //alert(JSON.stringify(data));
-			   $.each(data.list, function(index, items){
-				   $('<tr/>').append($('<td/>',{
-					   align: 'center',
-					   text: items.name
-				   })).append($('<td/>',{
-					   align: 'center',
-					   text: items.id
-				   })).append($('<td/>',{
-					   align: 'center',
-					   text: items.pwd
-				   })).appendTo('#table');
-			   });
-		   }
-		   
-	   });
-   });
- </script>
+ <script type="text/javascript" src="../js/userList.js"></script>
 </html>
