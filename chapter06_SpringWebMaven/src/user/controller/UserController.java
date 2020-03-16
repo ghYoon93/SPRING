@@ -18,6 +18,7 @@ import user.bean.UserDTO;
 import user.service.UserService;
 
 @Controller
+//@RequestMapping(/user)
 public class UserController {
 	@Autowired
 	private UserService userService;
